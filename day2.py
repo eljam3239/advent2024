@@ -17,6 +17,12 @@ def solution(data):
     for row in data:
         if is_ascending_or_decreasing(row) and legal_adjacent_diff(row):
             safe_reports += 1
+        else:
+            for i in range(len(row)):
+                row2 = row[:i]+row[i+1:]
+                if is_ascending_or_decreasing(row2) and legal_adjacent_diff(row2):
+                    safe_reports += 1
+                    break
     return safe_reports
 
 if __name__ == "__main__":
